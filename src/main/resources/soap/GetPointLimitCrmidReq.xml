@@ -1,0 +1,15 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:m0="http://www.shtel.com.cn/csb/v2/" xmlns:m1="http://schemas.xmlsoap.org/soap/encoding/">
+ <SOAP-ENV:Header>
+  <m:CSBHeader xmlns:m="http://www.shtel.com.cn/csb/v2/">
+   <ServiceName xsi:type="xsd:string">GetPointLimitCrmid</ServiceName>
+   <ServiceVer xsi:type="xsd:string">1.0</ServiceVer>
+   <Consumer xsi:type="xsd:string">ZZSLPT</Consumer>
+   <RequestTime xsi:type="xsd:dateTime">2017-03-17T09:30:47.0Z</RequestTime>
+  </m:CSBHeader>
+ </SOAP-ENV:Header>
+ <SOAP-ENV:Body>
+  <m:getLimitCrmid xmlns:m="http://localhost:8080/services/0rderWS" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <crmId xsi:type="m0:string">PARACRMID</crmId>
+  </m:getLimitCrmid>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

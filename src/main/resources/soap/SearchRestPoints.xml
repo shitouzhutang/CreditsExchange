@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:m="http://www.shtel.com.cn/csb/v2/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xdt="http://www.w3.org/2005/xpath-datatypes">
+    <soapenv:Header>
+        <m:CSBHeader>
+            <soapenv:actor>http://schemas.xmlsoap.org/soap/actor/next</soapenv:actor>
+            <soapenv:mustUnderstand>0</soapenv:mustUnderstand>
+            <ServiceName>SearchRestPoints</ServiceName>
+            <Consumer>ZZSLPT</Consumer>
+            <ServiceVer>1.0</ServiceVer>
+        </m:CSBHeader>
+    </soapenv:Header>
+    <soapenv:Body>
+        <m:webSearchRestPoints xmlns:m="http://src.ws.com" xmlns:ns2="http://ideal.eai.com">
+            <searchRestPointsInfo>
+                <inputType>2</inputType>
+                <crmId>PARACRMID</crmId>
+                <deviceId/>
+                <csrId/>
+                <endDate>PARAENDDATE</endDate>
+                <source>PARASOURCE</source>
+                <startDate>PARASTARDATE</startDate>
+                <inputType>2</inputType>
+                <contactID/>
+            </searchRestPointsInfo>
+        </m:webSearchRestPoints>
+    </soapenv:Body>
+</soapenv:Envelope>
