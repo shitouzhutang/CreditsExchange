@@ -57,20 +57,13 @@ public class LoginController {
         JSONObject result = new JSONObject();
         byte[] en_result = new BigInteger(password, 16).toByteArray();
         byte[] de_result = RSAUtil.decrypt(RSAUtil.getKeyPair().getPrivate(), en_result);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append(new String(de_result));
         String pwd = sb.reverse().toString();
         if("12345".equals(pwd)){
 
             return "/success";
         }
-//        List<User> user = acountManageService.getUserByName(username);
-//        if (user != null && user.get(0).getPassword().equals(pwd.toString())) {
-//            request.getSession().setAttribute("user", user.get(0));
-//            result.put("result", "1");
-//            result.put("desc", "Login success");
-//            return result;
-//        }
         result.put("result", "0");
         result.put("desc", "Login failed");
         return "/index";
