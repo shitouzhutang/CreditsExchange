@@ -24,6 +24,9 @@ public class GetCustomerNbrWs {
 
     /**
      * 根据设备编号获取客户号
+     服务测试地址	http://test.csb.sh.ctc.com:7080/openit/class_7/CustomerNbr/{SERIAL_NUM}?Consumer=
+     服务仿真地址	http://10.7.18.12:7080/openit/class_7/CustomerNbr/{SERIAL_NUM}?Consumer=
+     服务生产地址	http://csb.sh.ctc.com:10080/openit/class_7/CustomerNbr/{SERIAL_NUM}?Consumer=
      * @param phone 设备编号（手机号码）
      * @return 客户编号
      */
@@ -31,7 +34,7 @@ public class GetCustomerNbrWs {
         CustomerNbr customerNbr=null;
         CloseableHttpClient httpclient = HttpClients.createDefault();
         CloseableHttpResponse httpResp = null;
-        String wsAddress="";
+        String wsAddress="http://10.145.205.53:7080/openit/class_7/CustomerNbr/0000398122?Consumer=ZZSLPT";
         try {
 
             //发送get请求
