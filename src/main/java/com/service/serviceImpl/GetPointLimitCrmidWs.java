@@ -36,6 +36,18 @@ public class GetPointLimitCrmidWs {
      * @return 返回0  是无兑换权限的客户， 返回1 是有兑换权限的客户
      */
     public static String getPointLimitByCustomNo(String customNo){
+        String flag="";
+        GetPointLimitCrmidResp resp=null;
+        GetPointLimitCrmidReq req=new GetPointLimitCrmidReq();
+        req.setCrmId(customNo);
+        String wsAddress="http://10.145.205.53:7805/openit/class_1?ServiceName=GetPointLimitCrmid&ServiceVer=1.0&Consumer=ZZSLPT";
+        resp=GetPointLimitCrmid(req,wsAddress);
+        if(resp!=null){
+            flag=resp.getGetLimitCrmidReturn();
+        }
+
+        //return flag;
+
 
         //返回0  是无兑换权限的客户， 返回1 是有兑换权限的客户
         return  "1";
@@ -43,6 +55,9 @@ public class GetPointLimitCrmidWs {
 
     /**
      * 根据客户编号查询是否在积分兑换黑名单
+     * 测试地址：http://test.csb.sh.ctc.com:7805/openit/class_1?ServiceName=GetPointLimitCrmid&ServiceVer=1.0&Consumer=
+     仿真地址：http://10.7.18.12:7805/openit/class_1?ServiceName=GetPointLimitCrmid&ServiceVer=1.0&Consumer=
+     生产地址：http://csb.sh.ctc.com:7805/openit/class_1?ServiceName=GetPointLimitCrmid&ServiceVer=1.0&Consumer=
      * @param req
      * @param wsAddress
      * @return
