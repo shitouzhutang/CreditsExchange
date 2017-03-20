@@ -7,4 +7,11 @@ import com.model.po.DxExchangeList;
  */
 public interface ExchangeService {
     DxExchangeList selectByphoneNo(String phoneNo);
+
+    /**
+     * 订单创建
+     *
+     * @param dxExchangeList
+     */
+    public void insertOrder(DxExchangeList dxExchangeList);
 }
