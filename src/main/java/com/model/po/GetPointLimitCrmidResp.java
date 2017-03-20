@@ -12,6 +12,10 @@ public class GetPointLimitCrmidResp {
     @CsbAttr(name = "getLimitCrmidReturn")
     private String getLimitCrmidReturn;
 
+
+    @CsbAttr(name="multiRef")
+    private String multiRef;
+
     @CsbAttr(name = "ErrCode")
     private String csbErrCode;
 
@@ -23,6 +27,14 @@ public class GetPointLimitCrmidResp {
 
     @CsbAttr(name = "faultstring")
     private String sgwErrDesc;
+
+    public String getMultiRef() {
+        return multiRef;
+    }
+
+    public void setMultiRef(String multiRef) {
+        this.multiRef = multiRef;
+    }
 
     public String getErrCode() {
         String errCode = StringUtils.isEmpty(csbErrCode)? sgwErrCode : csbErrCode;
