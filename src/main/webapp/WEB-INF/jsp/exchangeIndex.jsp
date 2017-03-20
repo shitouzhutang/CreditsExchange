@@ -1,6 +1,5 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
   Date: 2017/3/15
   Time: 13:39
   To change this template use File | Settings | File Templates.
@@ -19,15 +18,20 @@
                 var form=$("#myform");
                 form.attr("action",url);
                 form.submit();
-            })
+            });
+
+            //兑换
+            $("#exchange").click(function () {
+                var url="${pageContext.request.contextPath}/exchange";
+                var form=$("#myform");
+                form.attr("action",url);
+                form.submit();
+            });
+
+
+
         })
-        //兑换
-        $("#exchange").click(function () {
-            var url="${pageContext.request.contextPath}/exchange";
-            var form=$("#myform");
-            form.attr("action",url);
-            form.submit();
-        })
+
 
 
 
@@ -37,7 +41,7 @@
 <body>
 <form method="post" id="myform" name="sss">
     电话：<input type="text" id="phone" name="phone"/></br>
-    <input type="button" name="select" id="select" value="查询"  /><br/>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="button" name="select" id="select" value="查询"  />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     <input type="button" name="exchange" id="exchange" value="兑换"  /><br/>
 
 </form>
@@ -62,8 +66,17 @@
     </table>
 
 
+    </div>
 </c:if>
-
+<div style="text-align: center;width: 200px;height: 200px;">
+    <c:choose>
+    <c:when test="${empty success}">
+    <label>插入失败</label>
+    </c:when>
+    <c:otherwise>
+    <label>${success}</label>
+    </c:otherwise>
+    </c:choose>
 
 </body>
 </html>
