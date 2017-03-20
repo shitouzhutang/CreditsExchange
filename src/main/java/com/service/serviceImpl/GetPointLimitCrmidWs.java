@@ -29,30 +29,6 @@ public class GetPointLimitCrmidWs {
         reqXml = CsbUtil.loadWsXml(WS_REQ_XML);  //读取classpath下的xml文件内容，放在内存中
     }
 
-
-    /**
-     * 根据客户编号查询是否在积分兑换黑名单内
-     * @param customNo
-     * @return 返回0  是无兑换权限的客户， 返回1 是有兑换权限的客户
-     */
-    public static String getPointLimitByCustomNo(String customNo){
-        String flag="";
-        GetPointLimitCrmidResp resp=null;
-        GetPointLimitCrmidReq req=new GetPointLimitCrmidReq();
-        req.setCrmId(customNo);
-        String wsAddress="http://10.145.205.53:7805/openit/class_1?ServiceName=GetPointLimitCrmid&ServiceVer=1.0&Consumer=ZZSLPT";
-        resp=GetPointLimitCrmid(req,wsAddress);
-        if(resp!=null){
-            flag=resp.getGetLimitCrmidReturn();
-        }
-
-        //return flag;
-
-
-        //返回0  是无兑换权限的客户， 返回1 是有兑换权限的客户
-        return  "1";
-    }
-
     /**
      * 根据客户编号查询是否在积分兑换黑名单
      * 测试地址：http://test.csb.sh.ctc.com:7805/openit/class_1?ServiceName=GetPointLimitCrmid&ServiceVer=1.0&Consumer=

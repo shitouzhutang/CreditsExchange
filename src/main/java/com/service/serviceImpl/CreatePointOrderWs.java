@@ -19,8 +19,10 @@ public class CreatePointOrderWs {
     }
 
 
-    /*
+
+    /**
 	 *
+	 *  积分订单创建
 	    测试地址：http://test.csb.sh.ctc.com:7805/openit/class_1?ServiceName=CreatePointOrder&ServiceVer=1.0&Consumer=
         仿真地址：http://10.7.18.12:7805/openit/class_1?ServiceName=CreatePointOrder&ServiceVer=1.0&Consumer=
         生产地址：http://csb.sh.ctc.com:7805/openit/class_1?ServiceName=CreatePointOrder&ServiceVer=1.0&Consumer=

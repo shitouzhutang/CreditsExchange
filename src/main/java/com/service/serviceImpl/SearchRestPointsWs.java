@@ -24,30 +24,6 @@ public class SearchRestPointsWs {
     static{
         reqXml = CsbUtil.loadWsXml(WS_REQ_XML);  //读取classpath下的xml文件内容，放在内存中
     }
-
-    /**
-     * 根据用户编号和设备编号查询用户积分余额
-     * @param customNo
-     * @param serialNo
-     * @return
-     */
-    public static String getRestPoints(String customNo,String serialNo){
-        String wsAddress="http://10.145.205.53:7805/openit/class_1?ServiceName=SearchRestPoints&ServiceVer=1.0&Consumer=ZZSLPT";
-        SearchRestPointsResp resp=new SearchRestPointsResp();
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        String date=simpleDateFormat.format(new Date()).toString();
-        SearchRestPointsReq req=new SearchRestPointsReq();
-        req.setCrmId("202123319237");
-        req.setEndDate(date);
-        req.setStartDate(date);
-        req.setSource("ZZSLPT");
-        resp= SearchRestPointsWs.searchRestPoints(req,wsAddress);
-        resp.getPoints();
-
-
-        return "积分余额";
-    }
-
     /**
      * 调用webservice查询用户积分余额
      *
@@ -65,7 +41,7 @@ public class SearchRestPointsWs {
                 log.info("!!!ErrorWs, searchRestPoints");
                 return resp;
             }
-            CsbHttpResp csbResp = CsbUtil.sendToCsbWs(reqXml, req, new SearchRestPointsReq(), wsAddress);
+            CsbHttpResp csbResp = CsbUtil.sendToCsbWs(reqXml, req, new SearchRestPointsResp(), wsAddress);
             if (csbResp.getRespObject()!=null){
                 resp=(SearchRestPointsResp)csbResp.getRespObject();
             }
