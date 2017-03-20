@@ -3,13 +3,13 @@
 <ScoreOrderInfo>
     <!-- 交互控制信息 -->
     <Head>
-        <Sender>积分平台 </Sender>
-        <Reciver>XX配送商 </Reciver>
-        <OrderTotal>3</OrderTotal>
+        <Sender>PARASENDER </Sender>
+        <Reciver>PARARECIVER </Reciver>
+        <OrderTotal>PARAORDERTOTAL</OrderTotal>
         <!--订单总数-->
         <MessageCode/>
         <Description/>
-        <ActiveCode>0991</ActiveCode>
+        <ActiveCode>PARAACTIVECODE</ActiveCode>
         <!--口令验证码-->
     </Head>
     <OrderDetail>
