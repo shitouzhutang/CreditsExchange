@@ -15,43 +15,43 @@ public class SearchRestPointsResp {
     private  String errorMsg;
     //积分数额
     @CsbAttr(name = "points")
-    private  int points;
+    private  String points;
 
     @CsbAttr(name = "ErrCode")
     private String errCode;
 
-    @CsbAttr(name = "ErrDesc")
-    private String errDesc;
+//    @CsbAttr(name = "ErrDesc")
+//    private String errDesc;
+//
+//    @CsbAttr(name = "faultcode")
+//    private String faultcode;
+//
+//    @CsbAttr(name = "faultstring")
+//    private String faultstring;
 
-    @CsbAttr(name = "faultcode")
-    private String faultcode;
-
-    @CsbAttr(name = "faultstring")
-    private String faultstring;
-
-    public String getErrDesc() {
-        return errDesc;
-    }
-
-    public void setErrDesc(String errDesc) {
-        this.errDesc = errDesc;
-    }
-
-    public String getFaultcode() {
-        return faultcode;
-    }
-
-    public void setFaultcode(String faultcode) {
-        this.faultcode = faultcode;
-    }
-
-    public String getFaultstring() {
-        return faultstring;
-    }
-
-    public void setFaultstring(String faultstring) {
-        this.faultstring = faultstring;
-    }
+//    public String getErrDesc() {
+//        return errDesc;
+//    }
+//
+//    public void setErrDesc(String errDesc) {
+//        this.errDesc = errDesc;
+//    }
+//
+//    public String getFaultcode() {
+//        return faultcode;
+//    }
+//
+//    public void setFaultcode(String faultcode) {
+//        this.faultcode = faultcode;
+//    }
+//
+//    public String getFaultstring() {
+//        return faultstring;
+//    }
+//
+//    public void setFaultstring(String faultstring) {
+//        this.faultstring = faultstring;
+//    }
 
     public String getDeadline() {
         return deadline;
@@ -77,11 +77,11 @@ public class SearchRestPointsResp {
         this.errorMsg = errorMsg;
     }
 
-    public int getPoints() {
+    public String getPoints() {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(String points) {
         this.points = points;
     }
 }
