@@ -8,4 +8,9 @@ import com.model.po.DxExchangeList;
  */
 public interface DxExchangeListMapper {
     DxExchangeList selectByphoneNo(String phoneNo);
+    /**
+     * 订单创建
+     * @param dxExchangeList
+     */
+    void insertOrder(DxExchangeList dxExchangeList);
 }
