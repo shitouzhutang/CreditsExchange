@@ -33,7 +33,7 @@ public class CsbUtil {
 	
 	public  static CsbHttpResp sendToCsbWs(String wsXml, Object objReq, Object objResp, String wsAddr)throws Exception{
 		String message = replaceParameter(wsXml, objReq);
-		//log.debug("==CsbReqHtml = " + message);
+		log.debug("==CsbReqHtml = " + message);
 
 		CsbHttpResp resp = null;
 		CloseableHttpClient httpclient = HttpClients.createDefault();                                                 
@@ -53,7 +53,7 @@ public class CsbUtil {
     		log.debug("status=" + status);
     		String respHtml = EntityUtils.toString(httpResp.getEntity(),"utf-8");
 			System.err.println(respHtml);
-			//log.debug("**CsbRespBody = " + respHtml);
+			log.debug("**CsbRespBody = " + respHtml);
     		
     		resp = new CsbHttpResp();
     		resp.setRespCode(status);
