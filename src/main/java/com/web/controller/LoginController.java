@@ -5,11 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.service.interceptor.LoginService;
 
 import com.utils.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.text.View;
 import java.math.BigInteger;
 import java.security.KeyPair;
 import java.security.interfaces.RSAPrivateKey;
@@ -36,7 +38,7 @@ public class LoginController {
     }
 
 
-    @RequestMapping(value = "/userLogin",method = RequestMethod.GET)
+    @RequestMapping(value = "/userLogin")
     @ResponseBody
     public Object login(HttpServletRequest request) throws Exception {
         JSONObject result = new JSONObject();
@@ -52,21 +54,20 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
-    @ResponseBody
-    public String login(String username, String password, HttpServletRequest request) throws Exception {
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) throws Exception {
         JSONObject result = new JSONObject();
         byte[] en_result = new BigInteger(password, 16).toByteArray();
         byte[] de_result = RSAUtil.decrypt(RSAUtil.getKeyPair().getPrivate(), en_result);
         StringBuilder sb = new StringBuilder();
         sb.append(new String(de_result));
         String pwd = sb.reverse().toString();
-        if("12345".equals(pwd)){
-
-            return "/success";
+        if("admin".equals(username)&&"12345".equals(pwd)){
+            return "redirect:/exchangeIndex";
         }
-        result.put("result", "0");
-        result.put("desc", "Login failed");
-        return "/index";
+        return "";
+//        result.put("result", "0");
+//        result.put("desc", "Login failed");
+//        return "/index";
     }
 
 
