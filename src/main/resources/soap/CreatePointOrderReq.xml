@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="gb2312"?>
-        <!--积分平台请求订单信息-->
+<!--积分平台请求订单信息-->
 <ScoreOrderInfo>
     <!-- 交互控制信息 -->
     <Head>
         <Sender>PARASENDER </Sender>
         <Reciver>PARARECIVER </Reciver>
         <OrderTotal>PARAORDERTOTAL</OrderTotal>
-        <!--订单总数-->
         <MessageCode/>
         <Description/>
-        <ActiveCode>PARAACTIVECODE</ActiveCode>
         <!--口令验证码-->
+        <ActiveCode>PARAACTIVECODE</ActiveCode>
     </Head>
     <OrderDetail>
         <!-- 订单 -->
         <!-- OrderType订单类型参考:1实物订单，2电子冲值订单 3 积分抽奖订单 4 电信自有产品订单 -->
-        <OrderLabel CrmId="202127544360" CardID="123456" Brand="1" OrderType="2" TotalScore="6200" Account="zhangjiming" CustomerName="张计明" Address="北京西路819号" PostCode="200120" Email="aa@sohu.com" Telephone="18917880176" FirstContact="mobile" CustomerArea="金山" Channel="网厅" DeadLineDate="2009-03-16" CustRemark="客户留言:sdfasfasf" ExpressValue="250">
-            <GiftDetail GiftId="H0001" GiftName="UFO不锈水杯" ChangeNumber="1" ScoreValue="5000"/>
-            <GiftDetail GiftId="H0002" GiftName="咖啡杯" ChangeNumber="1" ScoreValue="200"/>
+        <OrderLabel CrmId="PARACRMID" CardID="PARACARDID" Brand="PARABRAND" OrderType="PARAORDERTYPE" TotalScore="PARATOTALSCORE" Account="PARAACCOUNT" CustomerName="PARACUSTOMERNAME" Address="PARAADDRESS" PostCode="PARAPOSTCODE" Email="PARAEMAIL" Telephone="PARATELEPHONE" FirstContact="PARAFIRSTCONTACT" CustomerArea="PARACUSTOMERAREA" Channel="PARACHANNEL" DeadLineDate="PARADEADLINEDATE" CustRemark="PARACUSTREMARK" ExpressValue="PARAEXPRESSVALUE">
+            <GiftDetail GiftId="PARAGIFTID1" GiftName="PARAGIFTNAME1" ChangeNumber="PARACHANGENUMBER1" ScoreValue="PARASCOREVALUE1"/>
+            <GiftDetail GiftId="PARAGIFTID2" GiftName="PARAGIFTNAME2" ChangeNumber="PARACHANGENUMBER2" ScoreValue="PARASCOREVALUE2"/>
         </OrderLabel>
     </OrderDetail>
 </ScoreOrderInfo>
