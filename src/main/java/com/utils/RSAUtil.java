@@ -41,14 +41,13 @@ public class RSAUtil {
      */
     public static KeyPair generateKeyPair() throws Exception {
         try {
-            KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA",
-                    new org.bouncycastle.jce.provider.BouncyCastleProvider());
+            KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA", new org.bouncycastle.jce.provider.BouncyCastleProvider());
             final int KEY_SIZE = 1024;// 没什么好说的了，这个值关系到块加密的大小，可以更改，但是不要太大，否则效率会低
             keyPairGen.initialize(KEY_SIZE, new SecureRandom());
             KeyPair keyPair = keyPairGen.generateKeyPair();
 
-            System.out.println(keyPair.getPrivate());
-            System.out.println(keyPair.getPublic());
+//            System.out.println(keyPair.getPrivate());
+//            System.out.println(keyPair.getPublic());
 
             saveKeyPair(keyPair);
             return keyPair;
@@ -142,8 +141,7 @@ public class RSAUtil {
      */
     public static byte[] encrypt(PublicKey pk, byte[] data) throws Exception {
         try {
-            Cipher cipher = Cipher.getInstance("RSA",
-                    new org.bouncycastle.jce.provider.BouncyCastleProvider());
+            Cipher cipher = Cipher.getInstance("RSA", new org.bouncycastle.jce.provider.BouncyCastleProvider());
             cipher.init(Cipher.ENCRYPT_MODE, pk);
             int blockSize = cipher.getBlockSize();// 获得加密块大小，如：加密前数据为128个byte，而key_size=1024
             // 加密块大小为127
@@ -186,8 +184,7 @@ public class RSAUtil {
      */
     public static byte[] decrypt(PrivateKey pk, byte[] raw) throws Exception {
         try {
-            Cipher cipher = Cipher.getInstance("RSA",
-                    new org.bouncycastle.jce.provider.BouncyCastleProvider());
+            Cipher cipher = Cipher.getInstance("RSA",new org.bouncycastle.jce.provider.BouncyCastleProvider());
             cipher.init(cipher.DECRYPT_MODE, pk);
             int blockSize = cipher.getBlockSize();
             ByteArrayOutputStream bout = new ByteArrayOutputStream(64);
