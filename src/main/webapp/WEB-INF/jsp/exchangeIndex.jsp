@@ -69,14 +69,9 @@
     </div>
 </c:if>
 <div style="text-align: center;width: 200px;height: 200px;">
-    <c:choose>
-    <c:when test="${empty success}">
-    <label>插入失败</label>
-    </c:when>
-    <c:otherwise>
-    <label>${success}</label>
-    </c:otherwise>
-    </c:choose>
+    <c:if test="${not empty success}">
+        <label>${success}</label>
+    </c:if>
 
 </body>
 </html>
