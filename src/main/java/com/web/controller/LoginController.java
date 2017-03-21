@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.swing.text.View;
 import java.math.BigInteger;
 import java.security.KeyPair;
+import java.security.PrivateKey;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
@@ -53,15 +54,16 @@ public class LoginController {
         return result;
     }
 
-    @RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
+    @RequestMapping(value = "/loginCheck")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) throws Exception {
         JSONObject result = new JSONObject();
-        byte[] en_result = new BigInteger(password, 16).toByteArray();
-        byte[] de_result = RSAUtil.decrypt(RSAUtil.getKeyPair().getPrivate(), en_result);
+        byte[] en_result=HexUtil.hexStringToBytes(password);
+        PrivateKey privateKey=RSAUtil.getKeyPair().getPrivate();
+        byte[] de_result = RSAUtil.decrypt(privateKey, en_result);
         StringBuilder sb = new StringBuilder();
         sb.append(new String(de_result));
         String pwd = sb.reverse().toString();
-        if("admin".equals(username)&&"12345".equals(pwd)){
+        if("admin".equals(username)&&"1234".equals(pwd)){
             return "redirect:/exchangeIndex";
         }
         return "";

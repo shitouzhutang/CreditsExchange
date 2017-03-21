@@ -55,7 +55,8 @@ public class ExchangeController {
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         String date=simpleDateFormat.format(new Date()).toString();
         SearchRestPointsReq pointsReq=new SearchRestPointsReq();
-        req.setCrmId("202123319237");
+        pointsReq.setCrmId("202123319237");
+       // req.setCrmId("202110249226");
         pointsReq.setEndDate(date);
         pointsReq.setStartDate(date);
         pointsReq.setSource("ZZSLPT");

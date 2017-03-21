@@ -82,7 +82,7 @@ public class TestController {
 //
 //        System.err.println(JacksonUtil.objToJsonPretty(resp));
 
-        //积分余额查询
+       // 积分余额查询
 //        String wsAddress="http://10.145.205.53:7805/openit/class_1?ServiceName=SearchRestPoints&ServiceVer=1.0&Consumer=ZZSLPT";
 //        SearchRestPointsResp resp=new SearchRestPointsResp();
 //        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
@@ -121,8 +121,16 @@ public class TestController {
          req.setTotalScore("6200");
          req.setTelephone("18917880176");
          req.setEmail("aa@sohu.com");
-        resp= CreatePointOrderWs.CreatePointOrder(req,wsAddress);
-        System.err.println(JacksonUtil.objToJsonPretty(resp));
+         req.setGiftId1("H0001");
+         req.setGiftId2("H0002");
+         req.setGiftName1("UFO不锈水杯");
+         req.setGiftName2("咖啡杯");
+         req.setChangeNumber1("1");
+         req.setChangeNumber2("1");
+         req.setScoreValue1("5000");
+         req.setScoreValue2("200");
+           resp= CreatePointOrderWs.CreatePointOrder(req,wsAddress);
+           System.err.println(JacksonUtil.objToJsonPretty(resp));
 
 
 
