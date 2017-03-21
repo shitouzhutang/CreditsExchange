@@ -34,7 +34,7 @@ public class CsbUtil {
 	public  static CsbHttpResp sendToCsbWs(String wsXml, Object objReq, Object objResp, String wsAddr)throws Exception{
 		String message = replaceParameter(wsXml, objReq);
 		log.debug("==CsbReqHtml = " + message);
-
+		log.info("接口实际请求报文= " + message);
 		CsbHttpResp resp = null;
 		CloseableHttpClient httpclient = HttpClients.createDefault();                                                 
         CloseableHttpResponse httpResp = null;                                                                           
@@ -99,7 +99,7 @@ public class CsbUtil {
 				line = reader.readLine();
 			}
 			reqXml = buffer.toString();
-			//log.info("load xml, wsXml= " + reqXml);
+			log.info("load xml, wsXml= " + reqXml);
 		} catch (Exception e) {
 			log.error("load xml, error, exception :" + e);
 			e.printStackTrace();
