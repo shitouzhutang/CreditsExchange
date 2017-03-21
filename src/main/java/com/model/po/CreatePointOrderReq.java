@@ -25,6 +25,79 @@ public class CreatePointOrderReq {
     private String  deadLineDate;
     private String custRemark;
     private String expressValue;
+    private String giftId1;
+    private String giftId2;
+    private String GiftName1;
+    private String GiftName2;
+    private String changeNumber1;
+    private String changeNumber2;
+    private String scoreValue1;
+    private String scoreValue2;
+
+
+    public String getGiftId1() {
+        return giftId1;
+    }
+
+    public void setGiftId1(String giftId1) {
+        this.giftId1 = giftId1;
+    }
+
+    public String getGiftId2() {
+        return giftId2;
+    }
+
+    public void setGiftId2(String giftId2) {
+        this.giftId2 = giftId2;
+    }
+
+    public String getGiftName1() {
+        return GiftName1;
+    }
+
+    public void setGiftName1(String giftName1) {
+        GiftName1 = giftName1;
+    }
+
+    public String getGiftName2() {
+        return GiftName2;
+    }
+
+    public void setGiftName2(String giftName2) {
+        GiftName2 = giftName2;
+    }
+
+    public String getChangeNumber1() {
+        return changeNumber1;
+    }
+
+    public void setChangeNumber1(String changeNumber1) {
+        this.changeNumber1 = changeNumber1;
+    }
+
+    public String getChangeNumber2() {
+        return changeNumber2;
+    }
+
+    public void setChangeNumber2(String changeNumber2) {
+        this.changeNumber2 = changeNumber2;
+    }
+
+    public String getScoreValue1() {
+        return scoreValue1;
+    }
+
+    public void setScoreValue1(String scoreValue1) {
+        this.scoreValue1 = scoreValue1;
+    }
+
+    public String getScoreValue2() {
+        return scoreValue2;
+    }
+
+    public void setScoreValue2(String scoreValue2) {
+        this.scoreValue2 = scoreValue2;
+    }
 
     public String getSender() {
         return sender;
