@@ -36,6 +36,7 @@ public class SearchRestPointsWs {
      */
     public static SearchRestPointsResp searchRestPoints(SearchRestPointsReq req,String wsAddress){
         SearchRestPointsResp resp=null;
+
         try {
             if (req==null) {
                 log.info("!!!ErrorWs, searchRestPoints");
