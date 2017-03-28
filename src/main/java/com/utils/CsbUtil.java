@@ -54,15 +54,24 @@ public class CsbUtil {
     		String respHtml = EntityUtils.toString(httpResp.getEntity(),"utf-8");
 			System.err.println(respHtml);
 			log.debug("**CsbRespBody = " + respHtml);
-    		
     		resp = new CsbHttpResp();
     		resp.setRespCode(status);
     		resp.setRespHtml(respHtml);
-    		if (status == HttpStatus.SC_OK) {
+    		String respHtmlCopy="";
+    		if (respHtml.contains("&lt;")||respHtml.contains("&gt;")||respHtml.contains("&quot;")){
+				respHtmlCopy=respHtml.replace("&lt;","<").replace("&gt;",">").replace("&quot;","\"");
+				if (respHtmlCopy.indexOf("<?xml version=\"1.0\" encoding=\"gb2312\" ?>")>1){
+					respHtmlCopy=respHtmlCopy.replace("<?xml version=\"1.0\" encoding=\"gb2312\" ?>","");
+				}
+			}else{
+    			respHtmlCopy=respHtml;
+			}
+			System.err.println(respHtmlCopy);
+			if (status == HttpStatus.SC_OK) {
     			XMLReader parser = XMLReaderFactory.createXMLReader();
     			CsbSaxReader<Object> csbHandler = new CsbSaxReader<>(objResp);
     			parser.setContentHandler(csbHandler);
-    			parser.parse(new InputSource(new ByteArrayInputStream(respHtml.getBytes("utf-8"))));
+    			parser.parse(new InputSource(new ByteArrayInputStream(respHtmlCopy.getBytes("utf-8"))));
     			resp.setRespObject(csbHandler.getXmlObject());
     		}
     		httpPost.releaseConnection();    

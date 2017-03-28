@@ -39,7 +39,6 @@ public class CreatePointOrderWs {
             if (csbResp.getRespObject() != null) {
                 resp = (CreatePointOrderResp) csbResp.getRespObject();
             }
-
             log.debug("CreatePointOrderResp = " + JacksonUtil.objToJsonPretty(resp));
         } catch (Exception e) {
             e.printStackTrace();

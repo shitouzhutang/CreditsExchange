@@ -39,7 +39,7 @@ public class GetPointLimitCrmidWs {
      * @return
      */
     public static GetPointLimitCrmidResp GetPointLimitCrmid(GetPointLimitCrmidReq req,String wsAddress){
-        GetPointLimitCrmidResp resp=null;
+        GetPointLimitCrmidResp resp=new GetPointLimitCrmidResp();
         try {
             if (req==null) {
               log.info("!!!ErrorWs, GetPointLimitCrmid");

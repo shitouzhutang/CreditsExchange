@@ -1,22 +1,32 @@
-<?xml version="1.0" encoding="gb2312"?>
-<!--积分平台请求订单信息-->
-<ScoreOrderInfo>
-    <!-- 交互控制信息 -->
-    <Head>
-        <Sender>PARASENDER </Sender>
-        <Reciver>PARARECIVER </Reciver>
-        <OrderTotal>PARAORDERTOTAL</OrderTotal>
-        <MessageCode/>
-        <Description/>
-        <!--口令验证码-->
-        <ActiveCode>PARAACTIVECODE</ActiveCode>
-    </Head>
-    <OrderDetail>
-        <!-- 订单 -->
-        <!-- OrderType订单类型参考:1实物订单，2电子冲值订单 3 积分抽奖订单 4 电信自有产品订单 -->
-        <OrderLabel CrmId="PARACRMID" CardID="PARACARDID" Brand="PARABRAND" OrderType="PARAORDERTYPE" TotalScore="PARATOTALSCORE" Account="PARAACCOUNT" CustomerName="PARACUSTOMERNAME" Address="PARAADDRESS" PostCode="PARAPOSTCODE" Email="PARAEMAIL" Telephone="PARATELEPHONE" FirstContact="PARAFIRSTCONTACT" CustomerArea="PARACUSTOMERAREA" Channel="PARACHANNEL" DeadLineDate="PARADEADLINEDATE" CustRemark="PARACUSTREMARK" ExpressValue="PARAEXPRESSVALUE">
-            <GiftDetail GiftId="PARAGIFTID1" GiftName="PARAGIFTNAME1" ChangeNumber="PARACHANGENUMBER1" ScoreValue="PARASCOREVALUE1"/>
-            <GiftDetail GiftId="PARAGIFTID2" GiftName="PARAGIFTNAME2" ChangeNumber="PARACHANGENUMBER2" ScoreValue="PARASCOREVALUE2"/>
-        </OrderLabel>
-    </OrderDetail>
-</ScoreOrderInfo>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:m0="http://www.shtel.com.cn/csb/v2/" xmlns:m1="http://schemas.xmlsoap.org/soap/encoding/">
+        <SOAP-ENV:Header>
+            <m:CSBHeader xmlns:m="http://www.shtel.com.cn/csb/v2/">
+                <ServiceName xsi:type="xsd:string">CreatePointOrder</ServiceName>
+                <ServiceVer xsi:type="xsd:string">1.0</ServiceVer>
+                <Consumer xsi:type="xsd:string">ZZSLPT</Consumer>
+                <RequestTime xsi:type="xsd:dateTime">PARAREQUESTTIME</RequestTime>
+            </m:CSBHeader>
+        </SOAP-ENV:Header>
+        <SOAP-ENV:Body>
+            <m:createOrderbyXml xmlns:m="http://localhost:8080/services/0rderWS" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+                <inputOrder xsi:type="m1:string">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+                    &lt;ScoreOrderInfo&gt;
+                    &lt;Head&gt;
+                    &lt;Sender&gt;PARASENDER &lt;/Sender&gt;
+                    &lt;Reciver&gt;PARARECIVER &lt;/Reciver&gt;
+                    &lt;OrderTotal&gt;PARAORDERTOTAL&lt;/OrderTotal&gt;
+                    &lt;MessageCode/&gt;
+                    &lt;Description/&gt;
+                    &lt;ActiveCode&gt;PARAACTIVECODE&lt;/ActiveCode&gt;
+                    &lt;/Head&gt;
+                    &lt;OrderDetail&gt;
+                    &lt;OrderLabel CrmId="PARACRMID" CardID="PARACARDID" Brand="PARABRAND" OrderType="PARAORDERTYPE" TotalScore="PARATOTALSCORE" Account="PARAACCOUNT" CustomerName="PARACUSTOMERNAME" Address="PARAADDRESS" PostCode="PARAPOSTCODE" Email="PARAEMAIL" Telephone="PARATELEPHONE" FirstContact="PARAFIRSTCONTACT" CustomerArea="PARACUSTOMERAREA" Channel="PARACHANNEL" DeadLineDate="PARADEADLINEDATE" CustRemark="PARACUSTREMARK" ExpressValue="PARAEXPRESSVALUE"&gt;
+                    &lt;GiftDetail GiftId="PARAGIFTID1" GiftName="PARAGIFTNAME1" ChangeNumber="PARACHANGENUMBER1" ScoreValue="PARASCOREVALUE1"/&gt;
+                    &lt;GiftDetail GiftId="PARAGIFTID2" GiftName="PARAGIFTNAME2" ChangeNumber="PARACHANGENUMBER2" ScoreValue="PARASCOREVALUE2"/&gt;
+                    &lt;/OrderLabel&gt;
+                    &lt;/OrderDetail&gt;
+                    &lt;/ScoreOrderInfo&gt;
+                </inputOrder>
+            </m:createOrderbyXml>
+        </SOAP-ENV:Body>
+    </SOAP-ENV:Envelope>

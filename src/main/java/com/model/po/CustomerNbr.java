@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class CustomerNbr {
     private List<Customer> items;
-    private Ref next;
+//    private Ref next;
 
     public List<Customer> getItems() {
         return items;
@@ -17,19 +17,19 @@ public class CustomerNbr {
         this.items = items;
     }
 
-    public Ref getNext() {
-        return next;
-    }
+//    public Ref getNext() {
+//        return next;
+//    }
+//
+//    public void setNext(Ref next) {
+//        this.next = next;
+//    }
 
-    public void setNext(Ref next) {
-        this.next = next;
-    }
 
     @Override
     public String toString() {
         return "CustomerNbr{" +
                 "items=" + items +
-                ", next=" + next +
                 '}';
     }
 }

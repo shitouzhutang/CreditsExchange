@@ -67,9 +67,6 @@ public class LoginController {
             return "redirect:/exchangeIndex";
         }
         return "";
-//        result.put("result", "0");
-//        result.put("desc", "Login failed");
-//        return "/index";
     }
 
 

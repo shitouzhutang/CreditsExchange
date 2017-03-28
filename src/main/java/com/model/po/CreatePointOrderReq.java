@@ -4,6 +4,7 @@ package com.model.po;
  * Created by Administrator on 2017/3/19.
  */
 public class CreatePointOrderReq {
+    private String requestTime;
     private String sender;
     private String reciver;
     private String orderTotal;
@@ -34,6 +35,13 @@ public class CreatePointOrderReq {
     private String scoreValue1;
     private String scoreValue2;
 
+    public String getRequestTime() {
+        return requestTime;
+    }
+
+    public void setRequestTime(String requestTime) {
+        this.requestTime = requestTime;
+    }
 
     public String getGiftId1() {
         return giftId1;

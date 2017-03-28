@@ -17,10 +17,42 @@ public class SearchRestPointsResp {
     @CsbAttr(name = "points")
     private  String points;
 
-    @CsbAttr(name = "ErrCode")
-    private String errCode;
+    @CsbAttr(name = "ErrorCode")
+    private String errorCode;
 
-//    @CsbAttr(name = "ErrDesc")
+    public String getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+
+    public String getPoints() {
+        return points;
+    }
+
+    public void setPoints(String points) {
+        this.points = points;
+    }
+
+    public String getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    //    @CsbAttr(name = "ErrDesc")
 //    private String errDesc;
 //
 //    @CsbAttr(name = "faultcode")
@@ -53,35 +85,5 @@ public class SearchRestPointsResp {
 //        this.faultstring = faultstring;
 //    }
 
-    public String getDeadline() {
-        return deadline;
-    }
 
-    public void setDeadline(String deadline) {
-        this.deadline = deadline;
-    }
-
-    public String getErrCode() {
-        return errCode;
-    }
-
-    public void setErrCode(String errCode) {
-        this.errCode = errCode;
-    }
-
-    public String getErrorMsg() {
-        return errorMsg;
-    }
-
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
-
-    public String getPoints() {
-        return points;
-    }
-
-    public void setPoints(String points) {
-        this.points = points;
-    }
 }

@@ -3,6 +3,7 @@ package com.service.serviceImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.model.po.CustomerNbr;
+import com.utils.JacksonUtil;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.config.RequestConfig;
@@ -31,31 +32,32 @@ public class GetCustomerNbrWs {
      * @return 客户编号
      */
     public static String getCustomerNbr(String phone){
-        CustomerNbr customerNbr=null;
+        //根据设备号查询客户
+        StringBuilder sb=new StringBuilder();
+        sb.append("http://10.145.205.53:7080/openit/class_7/CustomerNbr/");
+        sb.append(phone);
+        sb.append("?Consumer=ZZSLPT");
+        String wsAddress = sb.toString();
         CloseableHttpClient httpclient = HttpClients.createDefault();
         CloseableHttpResponse httpResp = null;
-        String wsAddress="http://10.145.205.53:7080/openit/class_7/CustomerNbr/0000398122?Consumer=ZZSLPT";
+        String custNumber="";
         try {
-
             //发送get请求
-            HttpGet httpGet=new HttpGet(wsAddress);
-            httpResp=httpclient.execute(httpGet);
-            String respValue = EntityUtils.toString(httpResp.getEntity(),"utf-8");
-            //服务器状态
-            int status = httpResp.getStatusLine().getStatusCode();
-            /**请求发送成功，并得到响应**/
-            if (status == HttpStatus.SC_OK) {
-                ObjectMapper mapper=new ObjectMapper();
-                //反序列化
-                customerNbr=mapper.readValue(respValue,CustomerNbr.class);
+            HttpGet httpGet = new HttpGet(wsAddress);
+            httpResp = httpclient.execute(httpGet);
+            String respHtml = EntityUtils.toString(httpResp.getEntity(),"utf-8");
+            System.err.println(respHtml);
+            CustomerNbr customerNbr=new CustomerNbr();
+            customerNbr= JacksonUtil.jsonToObj(respHtml,CustomerNbr.class);
+            if(customerNbr!=null&&customerNbr.getItems().size()>0){
+                custNumber=customerNbr.getItems().get(0).getCust_number();
             }
-            httpclient.close();
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
         } finally {
             IOUtils.closeQuietly(httpResp);
         }
-        return "11111";
+        return custNumber;
     }
 
 
