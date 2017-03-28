@@ -9,17 +9,18 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="${pageContext.request.contextPath}/js/jquery-1.8.3.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/BigInt.js" type="text/javascript" ></script>
-    <script src="${pageContext.request.contextPath}/js/Barrett.js" type="text/javascript" ></script>
-    <script src="${pageContext.request.contextPath}/js/RSA.js" type="text/javascript" ></script>
+    <c:set var="ctx" value="${pageContext.request.contextPath}"/>
+    <script src="${ctx}/js/jquery-3.1.1.js" type="text/javascript"></script>
+    <script src="${ctx}/js/BigInt.js" type="text/javascript" ></script>
+    <script src="${ctx}/js/Barrett.js" type="text/javascript" ></script>
+    <script src="${ctx}/js/RSA.js" type="text/javascript" ></script>
 
     <script type="text/javascript">
         function cmdEncrypt() {
             var pubexponent;
             var pubmodules;
             $.ajax({
-                url:"${pageContext.request.contextPath}/userLogin",
+                url:"${ctx}/userLogin",
                 dataType:"text",
                 type:"get",
                 async:false,
@@ -39,12 +40,9 @@
                 var encrypedPwd = encryptedString(key, encodeURIComponent($form.find('input[type="password"]').val()));
                 $form.find('input[type="password"]').val(encrypedPwd);
             }
-            $form.attr("action","${pageContext.request.contextPath}/loginCheck");
+            $form.attr("action","${ctx}/loginCheck");
             return true;
         }
-
-
-
 
     </script>
 </head>
