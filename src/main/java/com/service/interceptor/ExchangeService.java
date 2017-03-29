@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Administrator on 2017/3/15.
  */
 public interface ExchangeService {
-    DxExchangeList selectByphoneNo(String phoneNo);
+
 
     /**
      * 订单创建

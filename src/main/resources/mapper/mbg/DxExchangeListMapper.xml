@@ -1,38 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.mbg.DxExchangeListMapper" >
-  <resultMap id="BaseResultMap" type="com.model.po.DxExchangeList" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="time" property="time" jdbcType="VARCHAR" />
-    <result column="serial_no" property="serialNo" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="equi_num" property="equiNum" jdbcType="VARCHAR" />
-    <result column="operator" property="operator" jdbcType="VARCHAR" />
-    <result column="result_code" property="resultCode" jdbcType="VARCHAR" />
-    <result column="fault_code" property="faultCode" jdbcType="VARCHAR" />
-    <result column="fault_string" property="faultString" jdbcType="VARCHAR" />
-    <result column="err_code" property="errCode" jdbcType="VARCHAR" />
-    <result column="err_desc" property="errDesc" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.mbg.DxExchangeListMapper">
+  <resultMap id="BaseResultMap" type="com.model.po.DxExchangeList">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="serial_no" jdbcType="VARCHAR" property="serialNo" />
+    <result column="equi_num" jdbcType="VARCHAR" property="equiNum" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="result_code" jdbcType="VARCHAR" property="resultCode" />
+    <result column="fault_code" jdbcType="VARCHAR" property="faultCode" />
+    <result column="fault_string" jdbcType="VARCHAR" property="faultString" />
+    <result column="err_code" jdbcType="VARCHAR" property="errCode" />
+    <result column="err_desc" jdbcType="VARCHAR" property="errDesc" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -43,25 +42,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -72,41 +71,329 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
-    id, time, serial_no, phone, equi_num, operator, result_code, fault_code, fault_string, 
-    err_code, err_desc
+  <sql id="Base_Column_List">
+    id, time, serial_no, equi_num, operator, result_code, fault_code, fault_string, err_code, 
+    err_desc
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.po.DxExchangeListExample" >
+  <select id="selectByExample" parameterType="com.model.po.DxExchangeListExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from dx_exchange_list
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from dx_exchange_list
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from dx_exchange_list
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.model.po.DxExchangeListExample" >
+  <delete id="deleteByExample" parameterType="com.model.po.DxExchangeListExample">
     delete from dx_exchange_list
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.model.po.DxExchangeList" >
+  <insert id="insert" parameterType="com.model.po.DxExchangeList">
+    insert into dx_exchange_list (id, time, serial_no, 
+      equi_num, operator, result_code, 
+      fault_code, fault_string, err_code, 
+      err_desc)
+    values (#{id,jdbcType=INTEGER}, #{time,jdbcType=VARCHAR}, #{serialNo,jdbcType=VARCHAR}, 
+      #{equiNum,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, #{resultCode,jdbcType=VARCHAR}, 
+      #{faultCode,jdbcType=VARCHAR}, #{faultString,jdbcType=VARCHAR}, #{errCode,jdbcType=VARCHAR}, 
+      #{errDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.po.DxExchangeList">
+    insert into dx_exchange_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="serialNo != null">
+        serial_no,
+      </if>
+      <if test="equiNum != null">
+        equi_num,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="resultCode != null">
+        result_code,
+      </if>
+      <if test="faultCode != null">
+        fault_code,
+      </if>
+      <if test="faultString != null">
+        fault_string,
+      </if>
+      <if test="errCode != null">
+        err_code,
+      </if>
+      <if test="errDesc != null">
+        err_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null">
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="equiNum != null">
+        #{equiNum,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="resultCode != null">
+        #{resultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="faultCode != null">
+        #{faultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="faultString != null">
+        #{faultString,jdbcType=VARCHAR},
+      </if>
+      <if test="errCode != null">
+        #{errCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errDesc != null">
+        #{errDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.po.DxExchangeListExample" resultType="java.lang.Integer">
+    select count(*) from dx_exchange_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update dx_exchange_list
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.time != null">
+        time = #{record.time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serialNo != null">
+        serial_no = #{record.serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equiNum != null">
+        equi_num = #{record.equiNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operator != null">
+        operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resultCode != null">
+        result_code = #{record.resultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.faultCode != null">
+        fault_code = #{record.faultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.faultString != null">
+        fault_string = #{record.faultString,jdbcType=VARCHAR},
+      </if>
+      <if test="record.errCode != null">
+        err_code = #{record.errCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.errDesc != null">
+        err_desc = #{record.errDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update dx_exchange_list
+    set id = #{record.id,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=VARCHAR},
+      serial_no = #{record.serialNo,jdbcType=VARCHAR},
+      equi_num = #{record.equiNum,jdbcType=VARCHAR},
+      operator = #{record.operator,jdbcType=VARCHAR},
+      result_code = #{record.resultCode,jdbcType=VARCHAR},
+      fault_code = #{record.faultCode,jdbcType=VARCHAR},
+      fault_string = #{record.faultString,jdbcType=VARCHAR},
+      err_code = #{record.errCode,jdbcType=VARCHAR},
+      err_desc = #{record.errDesc,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.po.DxExchangeList">
+    update dx_exchange_list
+    <set>
+      <if test="time != null">
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null">
+        serial_no = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="equiNum != null">
+        equi_num = #{equiNum,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="resultCode != null">
+        result_code = #{resultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="faultCode != null">
+        fault_code = #{faultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="faultString != null">
+        fault_string = #{faultString,jdbcType=VARCHAR},
+      </if>
+      <if test="errCode != null">
+        err_code = #{errCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errDesc != null">
+        err_desc = #{errDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.po.DxExchangeList">
+    update dx_exchange_list
+    set time = #{time,jdbcType=VARCHAR},
+      serial_no = #{serialNo,jdbcType=VARCHAR},
+      equi_num = #{equiNum,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      result_code = #{resultCode,jdbcType=VARCHAR},
+      fault_code = #{faultCode,jdbcType=VARCHAR},
+      fault_string = #{faultString,jdbcType=VARCHAR},
+      err_code = #{errCode,jdbcType=VARCHAR},
+      err_desc = #{errDesc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.model.po.DxExchangeList">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="serial_no" jdbcType="VARCHAR" property="serialNo" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="equi_num" jdbcType="VARCHAR" property="equiNum" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="result_code" jdbcType="VARCHAR" property="resultCode" />
+    <result column="fault_code" jdbcType="VARCHAR" property="faultCode" />
+    <result column="fault_string" jdbcType="VARCHAR" property="faultString" />
+    <result column="err_code" jdbcType="VARCHAR" property="errCode" />
+    <result column="err_desc" jdbcType="VARCHAR" property="errDesc" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, time, serial_no, phone, equi_num, operator, result_code, fault_code, fault_string, 
+    err_code, err_desc
+  </sql>
+  <select id="selectByExample" parameterType="com.model.po.DxExchangeListExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dx_exchange_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dx_exchange_list
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dx_exchange_list
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.po.DxExchangeListExample">
+    delete from dx_exchange_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.po.DxExchangeList">
     insert into dx_exchange_list (id, time, serial_no, 
       phone, equi_num, operator, 
       result_code, fault_code, fault_string, 
@@ -116,127 +403,127 @@
       #{resultCode,jdbcType=VARCHAR}, #{faultCode,jdbcType=VARCHAR}, #{faultString,jdbcType=VARCHAR}, 
       #{errCode,jdbcType=VARCHAR}, #{errDesc,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.model.po.DxExchangeList" >
+  <insert id="insertSelective" parameterType="com.model.po.DxExchangeList">
     insert into dx_exchange_list
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="time != null" >
+      <if test="time != null">
         time,
       </if>
-      <if test="serialNo != null" >
+      <if test="serialNo != null">
         serial_no,
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         phone,
       </if>
-      <if test="equiNum != null" >
+      <if test="equiNum != null">
         equi_num,
       </if>
-      <if test="operator != null" >
+      <if test="operator != null">
         operator,
       </if>
-      <if test="resultCode != null" >
+      <if test="resultCode != null">
         result_code,
       </if>
-      <if test="faultCode != null" >
+      <if test="faultCode != null">
         fault_code,
       </if>
-      <if test="faultString != null" >
+      <if test="faultString != null">
         fault_string,
       </if>
-      <if test="errCode != null" >
+      <if test="errCode != null">
         err_code,
       </if>
-      <if test="errDesc != null" >
+      <if test="errDesc != null">
         err_desc,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="time != null" >
+      <if test="time != null">
         #{time,jdbcType=VARCHAR},
       </if>
-      <if test="serialNo != null" >
+      <if test="serialNo != null">
         #{serialNo,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="equiNum != null" >
+      <if test="equiNum != null">
         #{equiNum,jdbcType=VARCHAR},
       </if>
-      <if test="operator != null" >
+      <if test="operator != null">
         #{operator,jdbcType=VARCHAR},
       </if>
-      <if test="resultCode != null" >
+      <if test="resultCode != null">
         #{resultCode,jdbcType=VARCHAR},
       </if>
-      <if test="faultCode != null" >
+      <if test="faultCode != null">
         #{faultCode,jdbcType=VARCHAR},
       </if>
-      <if test="faultString != null" >
+      <if test="faultString != null">
         #{faultString,jdbcType=VARCHAR},
       </if>
-      <if test="errCode != null" >
+      <if test="errCode != null">
         #{errCode,jdbcType=VARCHAR},
       </if>
-      <if test="errDesc != null" >
+      <if test="errDesc != null">
         #{errDesc,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.model.po.DxExchangeListExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.model.po.DxExchangeListExample" resultType="java.lang.Integer">
     select count(*) from dx_exchange_list
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update dx_exchange_list
-    <set >
-      <if test="record.id != null" >
+    <set>
+      <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.time != null" >
+      <if test="record.time != null">
         time = #{record.time,jdbcType=VARCHAR},
       </if>
-      <if test="record.serialNo != null" >
+      <if test="record.serialNo != null">
         serial_no = #{record.serialNo,jdbcType=VARCHAR},
       </if>
-      <if test="record.phone != null" >
+      <if test="record.phone != null">
         phone = #{record.phone,jdbcType=VARCHAR},
       </if>
-      <if test="record.equiNum != null" >
+      <if test="record.equiNum != null">
         equi_num = #{record.equiNum,jdbcType=VARCHAR},
       </if>
-      <if test="record.operator != null" >
+      <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>
-      <if test="record.resultCode != null" >
+      <if test="record.resultCode != null">
         result_code = #{record.resultCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.faultCode != null" >
+      <if test="record.faultCode != null">
         fault_code = #{record.faultCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.faultString != null" >
+      <if test="record.faultString != null">
         fault_string = #{record.faultString,jdbcType=VARCHAR},
       </if>
-      <if test="record.errCode != null" >
+      <if test="record.errCode != null">
         err_code = #{record.errCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.errDesc != null" >
+      <if test="record.errDesc != null">
         err_desc = #{record.errDesc,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update dx_exchange_list
     set id = #{record.id,jdbcType=INTEGER},
       time = #{record.time,jdbcType=VARCHAR},
@@ -249,47 +536,47 @@
       fault_string = #{record.faultString,jdbcType=VARCHAR},
       err_code = #{record.errCode,jdbcType=VARCHAR},
       err_desc = #{record.errDesc,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.model.po.DxExchangeList" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.po.DxExchangeList">
     update dx_exchange_list
-    <set >
-      <if test="time != null" >
+    <set>
+      <if test="time != null">
         time = #{time,jdbcType=VARCHAR},
       </if>
-      <if test="serialNo != null" >
+      <if test="serialNo != null">
         serial_no = #{serialNo,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="equiNum != null" >
+      <if test="equiNum != null">
         equi_num = #{equiNum,jdbcType=VARCHAR},
       </if>
-      <if test="operator != null" >
+      <if test="operator != null">
         operator = #{operator,jdbcType=VARCHAR},
       </if>
-      <if test="resultCode != null" >
+      <if test="resultCode != null">
         result_code = #{resultCode,jdbcType=VARCHAR},
       </if>
-      <if test="faultCode != null" >
+      <if test="faultCode != null">
         fault_code = #{faultCode,jdbcType=VARCHAR},
       </if>
-      <if test="faultString != null" >
+      <if test="faultString != null">
         fault_string = #{faultString,jdbcType=VARCHAR},
       </if>
-      <if test="errCode != null" >
+      <if test="errCode != null">
         err_code = #{errCode,jdbcType=VARCHAR},
       </if>
-      <if test="errDesc != null" >
+      <if test="errDesc != null">
         err_desc = #{errDesc,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.model.po.DxExchangeList" >
+  <update id="updateByPrimaryKey" parameterType="com.model.po.DxExchangeList">
     update dx_exchange_list
     set time = #{time,jdbcType=VARCHAR},
       serial_no = #{serialNo,jdbcType=VARCHAR},

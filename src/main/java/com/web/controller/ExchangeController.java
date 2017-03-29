@@ -142,14 +142,13 @@ public class ExchangeController {
         dxExchangeList.setSerialNo("111111");
         //设备号 （就是电话号码）
         dxExchangeList.setEquiNum(serialNo);
+        //操作员
         dxExchangeList.setOperator("admin");
         //接口请求失败的反馈信息
         dxExchangeList.setErrCode(resp.getErrCode());
         dxExchangeList.setErrDesc(resp.getErrDesc());
         dxExchangeList.setFaultCode(resp.getFaultcode());
         dxExchangeList.setFaultString(resp.getFaultstring());
-        //电话号码
-        dxExchangeList.setPhone(serialNo);
         //兑换结果
         dxExchangeList.setResultCode(resp.getActiveCode());
         dxExchangeList.setTime( sdf.format(new Date()));

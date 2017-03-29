@@ -19,12 +19,6 @@ public class ExchangeServiceImpl implements ExchangeService {
     @Autowired
     private DxExchangeListMapper dxExchangeListMapper;
 
-    public DxExchangeList selectByphoneNo(String phoneNo) {
-        DxExchangeList exchangeList=new DxExchangeList();
-         exchangeList=dxExchangeListMapper.selectByphoneNo(phoneNo);
-        return exchangeList;
-    }
-
     /**
      * 订单创建
      *

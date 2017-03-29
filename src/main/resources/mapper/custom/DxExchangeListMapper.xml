@@ -5,7 +5,6 @@
         <id column="id" property="id" jdbcType="INTEGER" />
         <result column="time" property="time" jdbcType="VARCHAR" />
         <result column="serial_no" property="serialNo" jdbcType="VARCHAR" />
-        <result column="phone" property="phone" jdbcType="VARCHAR" />
         <result column="equi_num" property="equiNum" jdbcType="VARCHAR" />
         <result column="operator" property="operator" jdbcType="VARCHAR" />
         <result column="result_code" property="resultCode" jdbcType="VARCHAR" />
@@ -14,9 +13,7 @@
         <result column="err_code" property="errCode" jdbcType="VARCHAR" />
         <result column="err_desc" property="errDesc" jdbcType="VARCHAR" />
     </resultMap>
-    <select id="selectByphoneNo" resultMap="BaseResultMap" parameterType="java.lang.String">
-        SELECT * FROM dx_exchange_list WHERE  phone=#{_parameter}
-    </select>
+
     <!--订单创建后插入数据库-->
     <insert id="insertOrder" parameterType="com.model.po.DxExchangeList" >
         insert into dx_exchange_list
@@ -29,9 +26,6 @@
             </if>
             <if test="serialNo != null" >
                 serial_no,
-            </if>
-            <if test="phone != null" >
-                phone,
             </if>
             <if test="equiNum != null" >
                 equi_num,
@@ -64,9 +58,6 @@
             </if>
             <if test="serialNo != null" >
                 #{serialNo,jdbcType=VARCHAR},
-            </if>
-            <if test="phone != null" >
-                #{phone,jdbcType=VARCHAR},
             </if>
             <if test="equiNum != null" >
                 #{equiNum,jdbcType=VARCHAR},

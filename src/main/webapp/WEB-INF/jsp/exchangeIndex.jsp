@@ -5,13 +5,25 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <title>Title</title>
     <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-    <script type="text/javascript" src="${ctx}/js/jquery-3.1.1.js"></script>
+    <link href="${ctx}/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${ctx}/js/jquery-3.1.1.js"></script>
+    <script src="${ctx}/js/bootstrap.min.js"></script>
+
     <script type="text/javascript">
+
+        $(function () {
+            $('.popover-show').popover('show');
+        });
+        $(function () {
+            $('.popover-show').on('shown.bs.popover', function () {
+            alert("当显示时警告消息");
+        })});
+
         //查询
         $(function () {
             $("#select").click(function () {
@@ -28,30 +40,21 @@
                 form.attr("action",url);
                 form.submit();
             });
-
-
-
         })
-
-
-
-
-
     </script>
 </head>
 <body>
 <form method="post" id="myform" name="sss">
     电话：<input type="text" id="phone" name="phone"/>
     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="button" name="select" id="select" value="查询"  />
-    <%--<input type="button" name="exchange" id="exchange" value="兑换"  /><br/>--%>
 
 </form>
 
 <c:if test="${not empty dxExchange}">
-    <table style="text-align: center">
-        <tr><td colspan="4"><h3>客户资料</h3></td></tr>
-        <tr><td>客户编号</td><td>电话号码</td><td>积分余额</td><td>是否黑名单</td></tr>
-        <tr>
+    <table class="table">
+        <tr class="warning" style="text-align: center"><td colspan="4"><h3>客户资料</h3></td></tr>
+        <tr class="warning"><td>客户编号</td><td>电话号码</td><td>积分余额</td><td>是否黑名单</td></tr>
+        <tr class="success">
             <td>${dxExchange.customNo}</td>
             <td>${dxExchange.serialNo}</td>
             <td>${dxExchange.restPoints}</td>
@@ -65,16 +68,16 @@
             </c:choose>
         </tr>
 
-   <tr><td colspan="4"><h3>可兑换的礼品</h3></td></tr>
+   <tr class="warning" ><td colspan="4" style="text-align: center"><h3>可兑换的礼品</h3></td></tr>
     <%--<table style="text-align: center">--%>
-        <tr><td>礼品编号</td><td>礼品名称</td><td>兑换数量</td><td>所需积分</td></tr>
+        <tr class="warning"><td>礼品编号</td><td>礼品名称</td><td>兑换数量</td><td>所需积分</td><td>操作</td></tr>
         <c:forEach var="gift" items="${dxExchange.giftList}">
-            <tr>
+            <tr class="active">
                 <td>${gift.giftId}</td>
                 <td>${gift.giftName}</td>
                 <td>${gift.changeNumber}</td>
                 <td>${gift.scoreValue}</td>
-                <td><a href="${ctx}/exchange?giftId=${gift.giftId}&customNo=${dxExchange.customNo}&serialNo=${dxExchange.serialNo}">兑换</a></td>
+                <td><a  name="exchange" href="${ctx}/exchange?giftId=${gift.giftId}&customNo=${dxExchange.customNo}&serialNo=${dxExchange.serialNo}">兑换</a></td>
             </tr>
         </c:forEach>
     </table>
@@ -82,7 +85,15 @@
 </c:if>
 
 
+<div clas="container" style="padding: 100px 50px 10px;" >
+    <button type="button" class="btn btn-primary popover-show"   data-container="body"   data-toggle="popover" >
+        弹弹
+    </button>
 
+</div>
+
+
+<input type="hidden" id="hid" value="${resultMsg}"/>
 <div style="text-align: center;width: 200px;height: 200px;">
     <c:if test="${not empty resultMsg}">
         <label>${resultMsg}</label>
