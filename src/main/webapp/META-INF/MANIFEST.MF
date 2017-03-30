@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: CreditsExchange Maven Webapp
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: Administrator
+Specification-Title: CreditsExchange Maven Webapp
+Implementation-Vendor-Id: cn.dianxin.web
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.7.0_80
+Specification-Version: 1.0-SNAPSHOT
+
