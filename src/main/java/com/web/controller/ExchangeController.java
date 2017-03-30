@@ -9,6 +9,7 @@ import com.service.serviceImpl.SearchRestPointsWs;
 import com.utils.JacksonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -129,7 +130,7 @@ public class ExchangeController {
             req.setGiftName2("咖啡杯");
             req.setChangeNumber2("1");
             req.setScoreValue2("200");
-        }else if ("H0002".equals(giftId)){
+        }else {
             req.setGiftId2("H0001");
             req.setGiftName2("UFO不锈水杯");
             req.setChangeNumber2("1");
@@ -159,7 +160,7 @@ public class ExchangeController {
             resultMsg="兑换失败";
         }
         modelAndView.addObject("resultMsg",resultMsg);
-        modelAndView.setViewName("/exchangeIndex");
+        modelAndView.setViewName("/success");
         return modelAndView;
 
     }

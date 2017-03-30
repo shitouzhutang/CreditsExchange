@@ -83,16 +83,18 @@ public class TestController {
 
 
         //积分订单创建
-      //  测试地址：http://test.csb.sh.ctc.com:7805/openit/class_1?ServiceName=CreatePointOrder&ServiceVer=1.0&Consumer=
+//     测试地址：http://10.145.205.53:7805/openit/class_1?ServiceName=CreatePointOrder&ServiceVer=1.0&Consumer=
+//     仿真地址：http://10.7.18.12:7805/openit/class_1?ServiceName=CreatePointOrder&ServiceVer=1.0&Consumer=
+//     生产地址：http://csb.sh.ctc.com:7805/openit/class_1?ServiceName=CreatePointOrder&ServiceVer=1.0&Consumer=
         CreatePointOrderReq req=new CreatePointOrderReq();
-        String wsAddress="http://10.145.205.53:7805/openit/class_1?ServiceName=CreatePointOrder&ServiceVer=1.0&Consumer=ZZSLPT";
+        String wsAddress="http://10.145.205.53:7805/openit/class_1?ServiceName=CreatePointOrder&ServiceVer=1.0&Consumer=网厅";
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         req.setRequestTime(sdf.format(new Date()));
          req.setOrderTotal("2");
          req.setSender("积分平台");
          req.setReciver("XX配送商");
          req.setActiveCode("0991");
-         req.setCrmId("202123319237");
+         req.setCrmId("202134287980");
          req.setAccount("zhangjiming");
          req.setAddress("北京西路819号");
          req.setBrand("1");
@@ -101,21 +103,29 @@ public class TestController {
          req.setCustomerName("张计明");
          req.setCustRemark("客户留言:sdfasfasf");
          req.setDeadLineDate("2009-03-16");
-         req.setChannel("ZZSLPT");
-         req.setExpressValue("250");
+         req.setChannel("ZZSPT");
+         req.setExpressValue("0");
          req.setFirstContact("mobile");
          req.setOrderType("2");
-         req.setTotalScore("6200");
+         req.setTotalScore("10000");
          req.setTelephone("18917880176");
          req.setEmail("aa@sohu.com");
          req.setPostCode("200120");
-         req.setGiftId1("H0001");
+
+
+         req.setCardCode("JFPT20161222133100582085");
+         req.setMoneyValue("0");
+         req.setUseValue("0");
+         req.setPayMethod("1");
+         req.setOrganizeCode("sss");
+
+         req.setGiftId1("H167201");
 //         req.setGiftId2("H0002");
-         req.setGiftName1("UFO不锈水杯");
+         req.setGiftName1("2G本地手机上网流量包");
 //         req.setGiftName2("咖啡杯");
          req.setChangeNumber1("1");
 //         req.setChangeNumber2("1");
-         req.setScoreValue1("5000");
+         req.setScoreValue1("10000");
 //         req.setScoreValue2("200");
          CreatePointOrderResp  resp= CreatePointOrderWs.CreatePointOrder(req,wsAddress);
          System.err.println(JacksonUtil.objToJsonPretty(resp));
