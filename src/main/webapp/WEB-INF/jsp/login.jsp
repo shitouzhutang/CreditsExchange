@@ -23,7 +23,7 @@
 
     <!-- Custom styles for this template -->
     <link href="${ctx}/css/signin.css" rel="stylesheet">
-    <script src="${ctx}/js/jquery-3.1.1.js" type="text/javascript"></script>
+    <script src="${ctx}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
     <script src="${ctx}/js/BigInt.js" type="text/javascript" ></script>
     <script src="${ctx}/js/Barrett.js" type="text/javascript" ></script>
     <script src="${ctx}/js/RSA.js" type="text/javascript" ></script>

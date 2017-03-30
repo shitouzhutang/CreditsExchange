@@ -11,7 +11,7 @@
     <title>Title</title>
     <c:set var="ctx" value="${pageContext.request.contextPath}"/>
     <link href="${ctx}/css/bootstrap.min.css" rel="stylesheet">
-    <script src="${ctx}/js/jquery-3.1.1.js"></script>
+    <script src="${ctx}/js/jquery-3.1.1.min.js"></script>
     <script src="${ctx}/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
@@ -84,16 +84,6 @@
 
 </c:if>
 
-
-<div clas="container" style="padding: 100px 50px 10px;" >
-    <button type="button" class="btn btn-primary popover-show"   data-container="body"   data-toggle="popover" >
-        弹弹
-    </button>
-
-</div>
-
-
-<input type="hidden" id="hid" value="${resultMsg}"/>
 <div style="text-align: center;width: 200px;height: 200px;">
     <c:if test="${not empty resultMsg}">
         <label>${resultMsg}</label>
